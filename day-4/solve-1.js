@@ -1,22 +1,12 @@
 const fs = require("fs")
 const path = require("path")
+const { makeChunks } = require("../utils")
 
 const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf-8")
 
 const keys = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
-const lines = input.split("\n")
-const chunks = []
-
-let currentChunk = []
-for (let line of lines) {
-    if (line === "") {
-        chunks.push(currentChunk.join(" "))
-        currentChunk = []
-    } else {
-        currentChunk.push(line)
-    }
-}
+const chunks = makeChunks(input)
 
 let valid = 0
 

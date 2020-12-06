@@ -1,7 +1,10 @@
 const fs = require("fs")
 const path = require("path")
+const { makeChunks } = require("../utils")
 
 const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf-8")
+
+const chunks = makeChunks(input)
 
 const keys = {
     "byr": (value) => /^\d{4}$/.test(value) && parseInt(value) >= 1920 && parseInt(value) <= 2002,
@@ -19,19 +22,6 @@ const keys = {
     "hcl": (value) => /^#[a-f0-9]{6}$/.test(value),
     "ecl": (value) => /^(amb|blu|brn|gry|grn|hzl|oth)$/.test(value),
     "pid": (value) => /^\d{9}$/.test(value)
-}
-
-const lines = input.split("\n")
-const chunks = []
-
-let currentChunk = []
-for (let line of lines) {
-    if (line === "" || line === "\r" || line === "\n") {
-        chunks.push(currentChunk.join(" "))
-        currentChunk = []
-    } else {
-        currentChunk.push(line.replace("\r", ""))
-    }
 }
 
 let valid = 0
