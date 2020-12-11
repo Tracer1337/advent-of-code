@@ -1,0 +1,2 @@
+let p=0,s=require("fs").readFileSync(require("path").join(__dirname,"input.txt"),"utf-8").split("\n").map(e=>parseInt(e)).sort((a,b)=>a-b).reduce((s,v)=>(s[v-p]=s[v-p]?s[v-p]+1:1)&&(p=v)&&s,[])
+console.log(s[1]*(s[3]+1))
