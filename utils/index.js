@@ -18,9 +18,10 @@
  * ]
  * 
  * @param {String} input
+ * @param {String} [join=" "]
  * @returns {Array<String>} Chunks
  */
-function makeChunks(input) {
+function makeChunks(input, join = " ") {
     input = input.replace(/\r/g, "")
 
     const lines = input.split("\n")
@@ -30,12 +31,16 @@ function makeChunks(input) {
     let currentChunk = []
     for (let line of lines) {
         if (line === "") {
-            chunks.push(currentChunk.join(" "))
+            chunks.push(currentChunk.join(join))
             currentChunk = []
         } else {
             currentChunk.push(line)
         }
     }
+
+    if (currentChunk.length > 0) [
+        chunks.push(currentChunk.join(join))
+    ]
 
     return chunks
 }
