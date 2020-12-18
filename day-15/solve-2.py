@@ -1,3 +1,7 @@
+#
+# Source: https://github.com/TheMorpheus407/AdventOfCode2020/blob/master/15.py
+#
+
 def memory(nums, turns):
     num_dict = {num: counter + 1 for counter, num in enumerate(nums[:-1])}
     last = nums[-1]

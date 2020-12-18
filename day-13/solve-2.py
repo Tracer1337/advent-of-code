@@ -1,4 +1,6 @@
+#
 # Source: https://github.com/TheMorpheus407/AdventOfCode2020/blob/master/13.py
+#
 
 with open("input.txt") as f:
     inp = f.read().splitlines()

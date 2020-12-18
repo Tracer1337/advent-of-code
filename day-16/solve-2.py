@@ -1,3 +1,7 @@
+#
+# Source: https://github.com/TheMorpheus407/AdventOfCode2020/blob/master/16.py
+#
+
 import re
 with open("input.txt") as f:
     lines = f.read().splitlines()
